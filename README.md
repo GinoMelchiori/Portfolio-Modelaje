@@ -7,10 +7,13 @@ Hecho con **HTML, CSS y JavaScript puro** (sin frameworks ni dependencias). Resp
 ## Estructura
 
 ```
-index.html          Estructura de la página
-styles.css          Estilos (responsive + tema claro/oscuro)
-app.js              Lógica: edición, galería, polaroids, lightbox
-data/portfolio.json Contenido publicado (se carga si el navegador no tiene datos propios)
+portfolio-modelo/
+├── index.html           Estructura de la página
+├── css/styles.css       Estilos (responsive + tema claro/oscuro)
+├── js/app.js            Lógica: edición, galería, polaroids, visor
+├── data/portfolio.json  Contenido publicado (lo que ven los visitantes)
+├── .nojekyll            Evita el procesado de Jekyll en GitHub Pages
+└── .gitignore
 ```
 
 ## Uso
@@ -33,3 +36,25 @@ El `localStorage` es privado de cada navegador, así que para que los visitantes
 - Galería con filtros por categoría y visor a pantalla completa
 - Polaroids con epígrafes editables
 - Compresión de imágenes en el navegador
+
+## Despliegue en GitHub Pages
+
+1. Creá un repositorio público en github.com/new (sin README ni .gitignore).
+2. En la carpeta del proyecto:
+   ```bash
+   git init
+   git add .
+   git commit -m "Primer commit: portfolio de modelo"
+   git branch -M main
+   git remote add origin https://github.com/TU-USUARIO/portfolio-modelo.git
+   git push -u origin main
+   ```
+3. En GitHub: **Settings → Pages → Build and deployment → Deploy from a branch → `main` / `(root)` → Save**.
+4. En 1–2 minutos queda online en `https://TU-USUARIO.github.io/portfolio-modelo/`.
+
+## Actualizar el contenido
+
+1. Abrí `https://TU-USUARIO.github.io/portfolio-modelo/#editar`, cargá todo y tocá **Exportar**.
+2. Reemplazá `data/portfolio.json` por el archivo descargado.
+3. `git add data/portfolio.json && git commit -m "Actualizo contenido" && git push`
+4. Verificá en una ventana privada: tu navegador muestra tus datos locales y no el JSON publicado.
